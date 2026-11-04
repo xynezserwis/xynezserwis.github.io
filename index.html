@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Serwis iPhone i komputerów Kraków | Xynez Serwis</title>
+<meta name="description" content="Naprawa iPhone’ów, laptopów i komputerów w Krakowie. Napisz, co się zepsuło, a odpowiem z wyceną.">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;800&family=Newsreader:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="logo-xynez.png">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ComputerStore","name":"Xynez Serwis","email":"Yeetova.dev@Proton.me","areaServed":"Kraków","description":"Naprawa iPhone’ów, laptopów i komputerów"}</script>
+</head>
+<body>
+<div class="col">
+<div class="bar"><b>Xynez Serwis</b><a href="#kontakt">Napisz do mnie</a></div>
+
+<img class="logo fi" src="logo-xynez.png" alt="Xynez – serwis komputerów i telefonów" width="281" height="255">
+<h1 class="fi">Naprawiam iPhone’y i komputery w Krakowie.</h1>
+<p class="intro fi" style="animation-delay:.12s">Pęknięty ekran, bateria, która nie trzyma, laptop, który się grzeje albo muli. Napisz, co się dzieje, a powiem, co to może być i ile to będzie kosztować.</p>
+<a class="btn fi" style="animation-delay:.22s" href="#kontakt">Opisz usterkę</a>
+
+<h2 class="sc">Co naprawiam</h2>
+<dl class="sc">
+<div><dt>iPhone</dt><dd>Wymiana ekranu i baterii, gniazdo ładowania, diagnostyka usterek.</dd></div>
+<div><dt>Laptopy</dt><dd>Wolne działanie, przegrzewanie, czyszczenie i wymiana pasty, dysk SSD, więcej pamięci RAM.</dd></div>
+<div><dt>Komputery stacjonarne</dt><dd>Diagnoza i wymiana podzespołów, modernizacja zestawu.</dd></div>
+<div><dt>System i programy</dt><dd>Instalacja Windowsa, usuwanie wirusów, przeniesienie danych na nowy sprzęt.</dd></div>
+<div><dt>Coś innego</dt><dd>Napisz, co się dzieje. Jeśli się nie podejmę, uczciwie Ci o tym powiem.</dd></div>
+</dl>
+
+<h2 class="sc">Jak to wygląda</h2>
+<ol class="sc steps">
+<li>Piszesz, co się dzieje i jaki to sprzęt.</li>
+<li>Mówię, co to może być i ile mniej więcej będzie kosztować, zanim cokolwiek ruszę.</li>
+<li>Naprawiam dopiero po Twojej zgodzie i oddaję sprzęt razem z opisem tego, co zostało zrobione.</li>
+</ol>
+
+<h2 id="kontakt" class="sc">Napisz, co się zepsuło</h2>
+<form id="f" class="sc">
+<label><span>Imię</span><input name="imie" required autocomplete="name"></label>
+<label><span>Telefon lub e-mail</span><input name="kontakt" required></label>
+<label><span>Jaki to sprzęt?</span><select name="urzadzenie"><option>iPhone</option><option>Laptop</option><option>Komputer stacjonarny</option><option>Coś innego</option></select></label>
+<label><span>Co się dzieje?</span><textarea name="opis" required></textarea></label>
+<input name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
+<button class="btn send" type="submit">Wyślij zgłoszenie</button>
+<p class="note small">Dane z formularza wykorzystam tylko do odpowiedzi na Twoje zgłoszenie.</p>
+<p id="ok" class="note" hidden>Dzięki, zgłoszenie poszło. Odezwę się najszybciej, jak się da.</p>
+<p id="err" class="note" hidden>Coś poszło nie tak. Napisz do mnie bezpośrednio na adres na dole strony.</p>
+</form>
+
+<footer><span>© 2026 Xynez Serwis · Kraków</span><a href="mailto:Yeetova.dev@Proton.me">Yeetova.dev@Proton.me</a></footer>
+</div>
+<script src="script.js" defer></script>
+</body>
+</html>
