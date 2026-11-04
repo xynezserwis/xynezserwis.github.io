@@ -1,5 +1,5 @@
-/* Wklej tu adres swojego formularza z Formspree */
-var ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+/*  */
+var ENDPOINT = 'https://formspree.io/f/mdeeyddw';
 
 var fm = document.getElementById('f'),
     btn = fm.querySelector('.send'),
