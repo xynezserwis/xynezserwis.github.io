@@ -179,8 +179,15 @@ form.addEventListener("submit", async (e) => {
 });
 
 // ===== Sprawdzanie statusu zgłoszenia =====
+const statusCheck = document.getElementById("statusCheck");
 const statusForm = document.getElementById("statusForm");
 const statusResult = document.getElementById("statusResult");
+
+// Jeśli backend nie odpowiada (np. strona na GitHub Pages bez API) — ukryj widget
+fetch(API_BASE + "/api/health")
+  .then((r) => r.json())
+  .then((d) => { if (!d.ok) statusCheck.style.display = "none"; })
+  .catch(() => { statusCheck.style.display = "none"; });
 
 const STATUS_STEPS = [
   ["przyjęte", "Przyjęte"],

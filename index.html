@@ -277,6 +277,20 @@
         <p class="sec-head__sub">Wypełnij formularz — oddzwonimy lub odpiszemy w ciągu 24 h roboczych.</p>
       </header>
 
+      <!-- Status zgłoszenia -->
+      <div class="status-check reveal" id="statusCheck">
+        <div class="status-check__head">
+          <h3>Sprawdź status zgłoszenia</h3>
+          <p>Podaj numer zgłoszenia i telefon, na który je wysłałeś.</p>
+        </div>
+        <form class="status-check__form" id="statusForm">
+          <input type="text" id="statusNr" placeholder="Nr zgłoszenia, np. XY-2026-ABCD" autocomplete="off" required>
+          <input type="tel" id="statusPhone" placeholder="Telefon" autocomplete="tel" required>
+          <button type="submit" class="btn btn--solid">Sprawdź</button>
+        </form>
+        <div class="status-check__result" id="statusResult" hidden></div>
+      </div>
+
       <div class="contact">
         <form class="form reveal" id="contactForm" novalidate>
           <input type="hidden" name="_subject" value="Nowe zgłoszenie — XYNEZ">
@@ -361,20 +375,6 @@
             <p>Po wysłaniu zgłoszenia otrzymasz numer. Wpisz go poniżej razem z telefonem — zobaczysz, na jakim etapie jest naprawa.</p>
           </div>
         </aside>
-      </div>
-
-      <!-- Status zgłoszenia -->
-      <div class="status-check reveal" id="statusCheck">
-        <div class="status-check__head">
-          <h3>Sprawdź status zgłoszenia</h3>
-          <p>Podaj numer zgłoszenia i telefon, na który je wysłałeś.</p>
-        </div>
-        <form class="status-check__form" id="statusForm">
-          <input type="text" id="statusNr" placeholder="Nr zgłoszenia, np. XY-2026-ABCD" autocomplete="off" required>
-          <input type="tel" id="statusPhone" placeholder="Telefon" autocomplete="tel" required>
-          <button type="submit" class="btn btn--solid">Sprawdź</button>
-        </form>
-        <div class="status-check__result" id="statusResult" hidden></div>
       </div>
     </section>
 
