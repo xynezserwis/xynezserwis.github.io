@@ -69,8 +69,8 @@ function genNumber() {
 
 // FormSubmit — wysyła zgłoszenia na mail. Przy pierwszej wysyłce
 // na adres trafi mail aktywacyjny — trzeba go potwierdzić raz.
-const FORM_ENDPOINT = "https://formsubmit.co/ajax/ekipam.ekipa@gmail.com";
-const CONTACT_EMAIL = "ekipam.ekipa@gmail.com";
+const FORM_ENDPOINT = "https://formsubmit.co/ajax/yeetovadev@proton.me";
+const CONTACT_EMAIL = "yeetovadev@proton.me";
 
 const validators = {
   name: (v) => (v.trim().length >= 3 ? "" : "Podaj imię i nazwisko (min. 3 znaki)."),
