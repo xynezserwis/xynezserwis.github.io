@@ -1,8 +1,5 @@
 // ===== XYNEZ — interactions =====
 
-// Backend API (Render) — auto-rejestracja zgłoszeń. Jak nie działa, strona żyje bez niego.
-const API_BASE = "https://xynez-api.onrender.com";
-
 document.getElementById("year").textContent = new Date().getFullYear();
 
 // ===== Scroll progress + nav =====
@@ -157,13 +154,6 @@ form.addEventListener("submit", async (e) => {
       );
       window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
     }
-
-    // Auto-rejestracja statusu "wysłany" przez backend (nie blokuje formularza)
-    fetch(API_BASE + "/api/reports", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    }).catch(() => {});
 
     successNumber.textContent = "Numer zgłoszenia: " + data.zgloszenie;
     formSuccess.hidden = false;
