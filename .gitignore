@@ -1,8 +1,8 @@
-# Sekrety — NIE commitować
+
 config.json
 data/
 __pycache__/
 *.pyc
 
-# Panel admina — tylko lokalnie
+
 admin.html
