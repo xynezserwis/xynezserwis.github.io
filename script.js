@@ -75,7 +75,7 @@ const validators = {
     return digits.length >= 9 ? "" : "Podaj poprawny numer telefonu.";
   },
   email: (v) =>
-    !v || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? "" : "Podaj poprawny adres e-mail.",
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? "" : "Podaj poprawny adres e-mail — na niego pójdą powiadomienia.",
   device: (v) => (v ? "" : "Wybierz rodzaj urządzenia."),
   message: (v) => (v.trim().length >= 10 ? "" : "Opisz problem nieco dokładniej (min. 10 znaków)."),
   consent: (v) => (v ? "" : "Zaznacz wymaganą zgodę."),
