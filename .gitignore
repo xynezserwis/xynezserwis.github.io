@@ -1,0 +1,5 @@
+# Sekrety — NIE commitować
+config.json
+data/
+__pycache__/
+*.pyc
