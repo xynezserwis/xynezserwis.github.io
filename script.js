@@ -173,10 +173,10 @@ const statusForm = document.getElementById("statusForm");
 const statusResult = document.getElementById("statusResult");
 
 const STATUS_STEPS = [
-  ["przyjęte", "Przyjęte"],
+  ["przyjęte", "Wysłany"],
   ["w_trakcie", "W trakcie"],
-  ["gotowe", "Gotowe"],
-  ["odebrane", "Odebrane"],
+  ["gotowe", "Gotowy"],
+  ["odebrane", "Wydany"],
 ];
 
 statusForm.addEventListener("submit", async (e) => {
@@ -206,7 +206,7 @@ statusForm.addEventListener("submit", async (e) => {
       return `<li class="status-step ${cls}">${label}</li>`;
     }).join("");
 
-    const labels = { przyjęte: "Przyjęte do serwisu", w_trakcie: "W trakcie naprawy", gotowe: "Gotowe do odbioru", odebrane: "Odebrane" };
+    const labels = { przyjęte: "Formularz wysłany", w_trakcie: "W trakcie naprawy", gotowe: "Gotowy do odbioru", odebrane: "Wydany" };
     statusResult.innerHTML = `
       <ul class="status-steps">${steps}</ul>
       <p class="status-result__meta">
