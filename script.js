@@ -1,9 +1,5 @@
 // ===== XYNEZ — interactions =====
 
-// Adres backendu API. Lokalnie: "" (ten sam serwer).
-// Na GitHub Pages: podmień na adres deployu, np. "https://xynez-api.onrender.com"
-const API_BASE = "";
-
 document.getElementById("year").textContent = new Date().getFullYear();
 
 // ===== Scroll progress + nav =====
@@ -159,13 +155,6 @@ form.addEventListener("submit", async (e) => {
       window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
     }
 
-    // Zarejestruj zgłoszenie w backendzie (do statusów) — nie blokuje formularza
-    fetch(API_BASE + "/api/reports", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    }).catch(() => {});
-
     successNumber.textContent = "Numer zgłoszenia: " + data.zgloszenie;
     formSuccess.hidden = false;
     form.reset();
@@ -179,15 +168,9 @@ form.addEventListener("submit", async (e) => {
 });
 
 // ===== Sprawdzanie statusu zgłoszenia =====
-const statusCheck = document.getElementById("statusCheck");
+// Statusy trzymane w status.json w repo — aktualizowane z panelu admina.
 const statusForm = document.getElementById("statusForm");
 const statusResult = document.getElementById("statusResult");
-
-// Jeśli backend nie odpowiada (np. strona na GitHub Pages bez API) — ukryj widget
-fetch(API_BASE + "/api/health")
-  .then((r) => r.json())
-  .then((d) => { if (!d.ok) statusCheck.style.display = "none"; })
-  .catch(() => { statusCheck.style.display = "none"; });
 
 const STATUS_STEPS = [
   ["przyjęte", "Przyjęte"],
@@ -206,26 +189,31 @@ statusForm.addEventListener("submit", async (e) => {
   statusResult.innerHTML = '<p class="status-result__meta">Sprawdzanie…</p>';
 
   try {
-    const res = await fetch(`${API_BASE}/api/status?nr=${encodeURIComponent(nr)}&phone=${encodeURIComponent(phone)}`);
-    const data = await res.json();
+    const res = await fetch("status.json", { cache: "no-store" });
+    const all = await res.json();
+    const rep = all[nr.toUpperCase()];
+    const phone4 = phone.replace(/\D/g, "").slice(-4);
 
-    if (!data.ok) {
-      statusResult.innerHTML = `<p class="status-result__error">${data.error || "Nie znaleziono zgłoszenia."}</p>`;
+    if (!rep || rep.phone4 !== phone4) {
+      statusResult.innerHTML = '<p class="status-result__error">Nie znaleziono zgłoszenia. Sprawdź numer i telefon.</p>';
       return;
     }
 
+    const stepIdx = STATUS_STEPS.findIndex(([k]) => k === rep.status);
+    const current = stepIdx === -1 ? 0 : stepIdx;
     const steps = STATUS_STEPS.map(([key, label], i) => {
-      const cls = i < data.step ? "done" : i === data.step ? "current" : "";
+      const cls = i < current ? "done" : i === current ? "current" : "";
       return `<li class="status-step ${cls}">${label}</li>`;
     }).join("");
 
+    const labels = { przyjęte: "Przyjęte do serwisu", w_trakcie: "W trakcie naprawy", gotowe: "Gotowe do odbioru", odebrane: "Odebrane" };
     statusResult.innerHTML = `
       <ul class="status-steps">${steps}</ul>
       <p class="status-result__meta">
-        Zgłoszenie ${data.nr} · status: <strong>${data.label}</strong>
-        ${data.updated ? " · aktualizacja: " + data.updated : ""}
+        Zgłoszenie ${nr.toUpperCase()} · status: <strong>${labels[rep.status] || rep.status}</strong>
+        ${rep.updated ? " · aktualizacja: " + rep.updated : ""}
       </p>`;
   } catch {
-    statusResult.innerHTML = '<p class="status-result__error">Serwer niedostępny. Spróbuj ponownie.</p>';
+    statusResult.innerHTML = '<p class="status-result__error">Nie udało się pobrać statusu. Spróbuj ponownie.</p>';
   }
 });
