@@ -1,4 +1,4 @@
-// ===== XYNEZ — interactions =====
+// ===== XYNEZ - interactions =====
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -63,8 +63,8 @@ function genNumber() {
   return `XY-${new Date().getFullYear()}-${s}`;
 }
 
-// FormSubmit — wysyła zgłoszenia na mail. Przy pierwszej wysyłce
-// na adres trafi mail aktywacyjny — trzeba go potwierdzić raz.
+// FormSubmit - wysyła zgłoszenia na mail. Przy pierwszej wysyłce
+// na adres trafi mail aktywacyjny - trzeba go potwierdzić raz.
 const FORM_ENDPOINT = "https://formsubmit.co/ajax/yeetovadev@proton.me";
 const CONTACT_EMAIL = "yeetovadev@proton.me";
 
@@ -75,7 +75,7 @@ const validators = {
     return digits.length >= 9 ? "" : "Podaj poprawny numer telefonu.";
   },
   email: (v) =>
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? "" : "Podaj poprawny adres e-mail — na niego pójdą powiadomienia.",
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? "" : "Podaj poprawny adres e-mail - na niego pójdą powiadomienia.",
   device: (v) => (v ? "" : "Wybierz rodzaj urządzenia."),
   message: (v) => (v.trim().length >= 10 ? "" : "Opisz problem nieco dokładniej (min. 10 znaków)."),
   consent: (v) => (v ? "" : "Zaznacz wymaganą zgodę."),
@@ -111,7 +111,7 @@ form.addEventListener("submit", async (e) => {
   e.preventDefault();
   formSuccess.hidden = true;
 
-  // honeypot — boty wypełniają ukryte pole
+  // honeypot - boty wypełniają ukryte pole
   if (form.elements._honey.value) return;
 
   let valid = true;
@@ -148,7 +148,7 @@ form.addEventListener("submit", async (e) => {
       if (!res.ok) throw new Error("send failed");
     } else {
       await new Promise((r) => setTimeout(r, 900));
-      const subject = encodeURIComponent(`Zgłoszenie XYNEZ ${data.zgloszenie} — ${data.name}`);
+      const subject = encodeURIComponent(`Zgłoszenie XYNEZ ${data.zgloszenie} - ${data.name}`);
       const body = encodeURIComponent(
         `Zgłoszenie: ${data.zgloszenie}\nImię: ${data.name}\nTel: ${data.phone}\nEmail: ${data.email || "-"}\nUrządzenie: ${data.device} ${data.brand || ""}\n\n${data.message}`
       );
@@ -168,7 +168,7 @@ form.addEventListener("submit", async (e) => {
 });
 
 // ===== Sprawdzanie statusu zgłoszenia =====
-// Statusy trzymane w status.json w repo — aktualizowane z panelu admina.
+// Statusy trzymane w status.json w repo - aktualizowane z panelu admina.
 const statusForm = document.getElementById("statusForm");
 const statusResult = document.getElementById("statusResult");
 
